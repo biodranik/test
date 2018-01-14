@@ -1,10 +1,8 @@
-# Run build/deploy only on pull requests from the same repo and on pushes into the same repo.
-if: env(TRAVIS_SECURE_ENV_VARS) = true
 language: minimal
 git:
   depth: 1
   submodules_depth: 1
 script:
   - mkdir -p public/en
-  - echo "`date` This is a test message from a script" > public/en/README
+  - echo "`date` This is a test message from a script ${TRAVIS_SECURE_ENV_VARS}" > public/en/README
   - dpl --provider=pages --github-token=$GITHUB_TOKEN --local-dir=public/en --project-name="project-name" --skip-cleanup=true --keep-history=true --repo=biodranik/test --target-branch=gh-pages --committer-from-gh=true
