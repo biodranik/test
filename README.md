@@ -1,2 +1,2 @@
 # test
-tmp test repo
+Changed readme should trigger a build from pull request.
